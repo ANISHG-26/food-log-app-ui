@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:fla_app_2/Screens/CameraPage.dart';
+import 'package:fla_app_2/Screens/FoodResult.dart';
 
 class PreviewPage extends StatelessWidget {
   const PreviewPage({Key? key, required this.picture}) : super(key: key);
@@ -31,7 +32,14 @@ class PreviewPage extends StatelessWidget {
                     },
                     icon: const Icon(Icons.close)),
                 IconButton(
-                    onPressed: () => uploadImage('input.jpeg'),
+                    onPressed: () => {
+                          uploadImage('input.jpeg'),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FoodResult()),
+                          )
+                        },
                     icon: const Icon(Icons.check)),
               ],
             ),
@@ -42,13 +50,13 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future uploadImage(String title) async {
-    var request = http.MultipartRequest("POST", Uri.parse("INSERT API"));
-    request.fields['title'] = "dummy image";
-    request.headers['Authorization'] = "";
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("http://10.0.2.2:8000/api/images/"));
+    //request.fields['title'] = "Input.jpg";
+    //request.headers['Authorization'] = "";
     debugPrint(picture.path);
-
-    var image = http.MultipartFile.fromBytes(
-        'input', (await File(picture.path).readAsBytes()));
+    var file = File(picture.path);
+    var image = await http.MultipartFile.fromPath('image', file.path);
     request.files.add(image);
 
     var response = await request.send();
