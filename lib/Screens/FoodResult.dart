@@ -19,45 +19,6 @@ class _FoodResultState extends State<FoodResult> {
     futurePrediction = fetchPrediction();
   }
 
-  /*@override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Food Log App'),
-        ),
-        body: Center(
-          child: Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: Theme.of(context).colorScheme.outline,
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-            ),
-            child: SizedBox(
-              width: 300,
-              height: 100,
-              child: Center(
-                child: FutureBuilder<Prediction>(
-                  future: futurePrediction,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data!.details);
-                    } else if (snapshot.hasError) {
-                      return Text('${snapshot.error}');
-                    }
-
-                    // By default, show a loading spinner.
-                    return const CircularProgressIndicator();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ));
-  }
-} */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
