@@ -51,7 +51,7 @@ class PreviewPage extends StatelessWidget {
 
   Future uploadImage(String title) async {
     var request = http.MultipartRequest(
-        "POST", Uri.parse("http://10.0.2.2:8000/api/images/"));
+        "POST", Uri.parse("http://18.223.74.63:8000/api/images/"));
     //request.fields['title'] = "Input.jpg";
     //request.headers['Authorization'] = "";
     debugPrint(picture.path);
