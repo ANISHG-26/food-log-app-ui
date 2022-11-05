@@ -70,7 +70,7 @@ class _FoodResultState extends State<FoodResult> {
 
 Future<Prediction> fetchPrediction() async {
   final response =
-      await http.get(Uri.parse('http://10.0.2.2:8000/api/predict'));
+      await http.get(Uri.parse('http://18.223.74.63:8000/api/predict'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
